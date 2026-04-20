@@ -1,0 +1,7 @@
+crop-advisor/
+│
+├── app.py
+├── requirements.txt
+├── model/
+├── templates/
+│   └── index.html
