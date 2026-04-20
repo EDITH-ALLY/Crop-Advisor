@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crop Advisor</title>
+</head>
+<body>
+
+<h1>🌱 Crop Recommendation System</h1>
+
+<form id="form">
+  <input name="N" placeholder="Nitrogen"><br>
+  <input name="P" placeholder="Phosphorus"><br>
+  <input name="K" placeholder="Potassium"><br>
+  <input name="temperature" placeholder="Temperature"><br>
+  <input name="humidity" placeholder="Humidity"><br>
+  <input name="ph" placeholder="pH"><br>
+  <input name="rainfall" placeholder="Rainfall"><br>
+
+  <button type="submit">Predict</button>
+</form>
+
+<h2 id="result"></h2>
+
+<script>
+document.getElementById("form").onsubmit = function(e){
+  e.preventDefault();
+
+  let formData = new FormData(this);
+
+  fetch("https://YOUR-BACKEND.onrender.com/predict", {
+    method: "POST",
+    body: formData
+  })
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("result").innerHTML = data;
+  });
+}
+</script>
+
+</body>
+</html>
